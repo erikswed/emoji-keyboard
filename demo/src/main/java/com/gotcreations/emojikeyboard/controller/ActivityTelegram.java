@@ -18,7 +18,6 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.mikhaellopez.circularimageview.CircularImageView;
-import com.orm.SugarContext;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -29,16 +28,14 @@ import com.gotcreations.emojikeyboard.model.Message;
 import com.gotcreations.emojikeyboard.model.MessageType;
 import com.gotcreations.emojikeyboard.util.TimestampUtil;
 import com.gotcreations.emojilibrary.controller.TelegramPanel;
-import com.gotcreations.emojilibrary.model.Emoji;
 import com.gotcreations.emojilibrary.model.layout.EmojiCompatActivity;
-import com.gotcreations.emojilibrary.model.layout.TelegramPanelEventListener;
-import com.gotcreations.emojilibrary.util.SoftKeyboardUtil;
+import com.gotcreations.emojilibrary.model.layout.AppPanelEventListener;
 
 
 /**
  * Created by edgar on 17/02/2016.
  */
-public class ActivityTelegram extends EmojiCompatActivity implements TelegramPanelEventListener {
+public class ActivityTelegram extends EmojiCompatActivity implements AppPanelEventListener {
 
     public static final String TAG = "ActivityTelegram";
 

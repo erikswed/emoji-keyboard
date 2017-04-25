@@ -1,19 +1,13 @@
 package com.gotcreations.emojilibrary.controller;
 
-import android.content.res.Resources;
-import android.graphics.Rect;
 import android.os.Build;
 import android.os.Handler;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 
 import java.util.concurrent.Executors;
@@ -23,37 +17,34 @@ import java.util.concurrent.TimeUnit;
 import com.gotcreations.emojilibrary.R;
 import com.gotcreations.emojilibrary.model.layout.EmojiCompatActivity;
 import com.gotcreations.emojilibrary.model.layout.EmojiEditText;
-import com.gotcreations.emojilibrary.model.layout.TelegramPanelEventListener;
+import com.gotcreations.emojilibrary.model.layout.AppPanelEventListener;
 
 /**
  * Created by edgar on 18/02/2016.
  */
-public class TelegramPanel {
+public class TelegramPanel extends AppPanel{
 
     private static final String TAG = "TelegramPanel";
 
-    private EmojiCompatActivity mActivity;
     private Toolbar mBottomPanel;
-    private EmojiEditText mInput;
-    private EmojiKeyboard mEmojiKeyboard;
-    private TelegramPanelEventListener mListener;
-    private LinearLayout mCurtain;
     private Boolean mToogleIcon = Boolean.TRUE;
 
-    private Boolean isEmojiKeyboardVisible = Boolean.FALSE;
-
     // CONSTRUCTOR
-    public TelegramPanel(EmojiCompatActivity activity, TelegramPanelEventListener listener) {
+    public TelegramPanel(EmojiCompatActivity activity, AppPanelEventListener listener) {
+        super(activity);
         this.mActivity = activity;
-        this.initBottomPanel();
-        this.setInputConfig();
-        this.setOnBackPressed();
+        init();
         this.mEmojiKeyboard = new EmojiKeyboard(this.mActivity, this.mInput);
         this.mListener = listener;
     }
 
+    public TelegramPanel(EmojiCompatActivity activity) {
+        this(activity, null);
+    }
+
     // INITIALIZATION
-    private void initBottomPanel() {
+    @Override
+    protected void initBottomPanel() {
         this.mBottomPanel = (Toolbar) this.mActivity.findViewById(R.id.panel);
         this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
         this.mBottomPanel.setTitleTextColor(0xFFFFFFFF);
@@ -84,12 +75,12 @@ public class TelegramPanel {
             public boolean onMenuItemClick(MenuItem item) {
                 if (TelegramPanel.this.mListener != null) {
                     if (item.getItemId() == R.id.action_attach) {
-                        TelegramPanel.this.mListener.onAttachClicked();
+                        fireOnAttachClicked();
                     } else if (item.getItemId() == R.id.action_mic) {
                         if (TelegramPanel.this.mInput.getText().toString().equals("")) {
-                            TelegramPanel.this.mListener.onMicClicked();
+                            fireOnMicClicked();
                         } else {
-                            TelegramPanel.this.mListener.onSendClicked();
+                            fireOnSendClicked();
                         }
                     }
                     return Boolean.TRUE;
@@ -101,7 +92,8 @@ public class TelegramPanel {
         this.mCurtain = (LinearLayout) this.mActivity.findViewById(R.id.curtain);
     }
 
-    private void setInputConfig() {
+    @Override
+    protected void setInputConfig() {
         this.mInput = (EmojiEditText) this.mBottomPanel.findViewById(R.id.input);
         mInput.setInputType(InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS);
         this.mInput.addOnSoftKeyboardListener(new EmojiEditText.OnSoftKeyboardListener() {
@@ -178,63 +170,9 @@ public class TelegramPanel {
         });
     }
 
-    private void setOnBackPressed() {
-        this.mActivity.setOnBackPressed(new EmojiCompatActivity.OnBackPressedListener() {
-            @Override
-            public Boolean onBackPressed() {
-                if (TelegramPanel.this.isEmojiKeyboardVisible) {
-                    TelegramPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
-                    TelegramPanel.this.hideEmojiKeyboard(0);
-                    return Boolean.TRUE;
-                }
-                return Boolean.FALSE;
-            }
-        });
-    }
-
-    private void showEmojiKeyboard(int delay) {
-        if (delay > 0) {
-            try {
-                Thread.sleep(delay);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        TelegramPanel.this.isEmojiKeyboardVisible = Boolean.TRUE;
-        TelegramPanel.this.mEmojiKeyboard.getEmojiKeyboardLayout().setVisibility(LinearLayout.VISIBLE);
-    }
-
-    private void hideEmojiKeyboard(int delay) {
-        if (delay > 0) {
-            try {
-                Thread.sleep(delay);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        TelegramPanel.this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
-        TelegramPanel.this.isEmojiKeyboardVisible = Boolean.FALSE;
-        TelegramPanel.this.mEmojiKeyboard.getEmojiKeyboardLayout().setVisibility(LinearLayout.GONE);
-    }
-
-    private void openCurtain() {
-        this.mCurtain.setVisibility(LinearLayout.VISIBLE);
-    }
-
-    private void closeCurtain() {
-        this.mCurtain.setVisibility(LinearLayout.INVISIBLE);
-    }
-
-    //GETTER AND SETTERS
-    public void setListener(TelegramPanelEventListener mListener) {
-        this.mListener = mListener;
-    }
-
-    public String getText() {
-        return this.mInput.getText().toString();
-    }
-
-    public void setText(String text) {
-        this.mInput.setText(text);
+    @Override
+    protected void hideEmojiKeyboard(int delay) {
+        super.hideEmojiKeyboard(delay);
+        this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
     }
 }

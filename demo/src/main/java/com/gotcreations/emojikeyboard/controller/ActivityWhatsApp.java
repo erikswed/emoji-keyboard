@@ -1,7 +1,6 @@
 package com.gotcreations.emojikeyboard.controller;
 
 import android.content.Intent;
-import android.content.res.ColorStateList;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
@@ -16,8 +15,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.gotcreations.emojilibrary.model.layout.AppPanelEventListener;
 import com.mikhaellopez.circularimageview.CircularImageView;
-import com.orm.SugarContext;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -28,15 +27,13 @@ import com.gotcreations.emojikeyboard.model.Message;
 import com.gotcreations.emojikeyboard.model.MessageType;
 import com.gotcreations.emojikeyboard.util.TimestampUtil;
 import com.gotcreations.emojilibrary.controller.WhatsAppPanel;
-import com.gotcreations.emojilibrary.model.Emoji;
 import com.gotcreations.emojilibrary.model.layout.EmojiCompatActivity;
-import com.gotcreations.emojilibrary.model.layout.WhatsAppPanelEventListener;
 
 
 /**
  * Created by edgar on 17/02/2016.
  */
-public class ActivityWhatsApp extends EmojiCompatActivity implements WhatsAppPanelEventListener {
+public class ActivityWhatsApp extends EmojiCompatActivity implements AppPanelEventListener {
 
     public static final String TAG = "ActivityWhatsApp";
 
@@ -158,6 +155,16 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements WhatsAppPan
         this.getWindow().setBackgroundDrawable(this.getResources().getDrawable(R.drawable.telegram_bkg));
         this.setSupportActionBar(this.mToolbar);
         this.getSupportActionBar().setTitle("Whats App");
+    }
+
+    @Override
+    public void onAttachClicked() {
+
+    }
+
+    @Override
+    public void onMicClicked() {
+
     }
 
     // WHATS APP TOOLBAR INTERFACE
