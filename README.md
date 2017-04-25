@@ -1,8 +1,9 @@
 # Android Emoji Keyboard
 A library to provide an emoji-keyboard implementation for Android applications
 
-[ ![Download](https://api.bintray.com/packages/edsilfer/maven/emoji-library/images/download.svg) ](https://bintray.com/edsilfer/maven/emoji-library/_latestVersion)
+[![](https://jitpack.io/v/ander7agar/emoji-keyboard.svg)](https://jitpack.io/#ander7agar/emoji-keyboard)
 
+This is forked  from [edsilfer/emoji-keyboard](https://github.com/edsilfer/emoji-keyboard) project.
 <a name="showcase" />
 
 # Showcase
@@ -14,8 +15,13 @@ A library to provide an emoji-keyboard implementation for Android applications
 
 # Quicky Setup
 ```
+repositories {
+	...
+	maven { url 'https://jitpack.io' }
+}
+
 dependencies {
-    compile 'br.com.instachat:emoji-library:1.0.10'
+    compile 'com.github.ander7agar:emoji-keyboard:1.0.0'
 }
 ```
 Refer to the [wiki](https://github.com/instachat/emoji-library/wiki/Development) section.
@@ -29,14 +35,9 @@ Refer to the [wiki](https://github.com/instachat/emoji-library/wiki/Development)
 * [lopspower / CircularImageView](#REF4): _This is an Android project allowing to realize a circular ImageView in the simplest way possible;_
 * [square / picasso](#REF5): _A powerful image downloading and caching library for Android;_
 
-<a name="team-members"></a>
-# Team Members
-* "Fernandes S. Edgar" <fernandes.s.edgar@gmail.com>
-* "Leonardo Assunção" <leo.assuncao92@gmail.com>
-
 <a name="license"></a>
 # License
-Copyright 2015 Edgar da Silva Fernandes | Leonardo Assunção
+Copyright 2017 Andersson G. Acosta de la Rosa
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
