@@ -109,8 +109,14 @@ public class WhatsAppPanel extends AppPanel {
         });
     }
 
-    protected void hideEmojiKeyboard(int delay) {
+    @Override
+    public void hideEmojiKeyboard(int delay) {
         super.hideEmojiKeyboard(delay);
         WhatsAppPanel.this.mEmojiButton.setImageResource(R.drawable.input_emoji);
+    }
+
+    @Override
+    public void showAudioPanel(boolean show) {
+
     }
 }

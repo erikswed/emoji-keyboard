@@ -163,7 +163,12 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements AppPanelEve
     }
 
     @Override
-    public void onMicClicked() {
+    public void onMicOnClicked() {
+
+    }
+
+    @Override
+    public void onMicOffClicked() {
 
     }
 

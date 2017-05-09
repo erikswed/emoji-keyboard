@@ -1,6 +1,5 @@
 package com.gotcreations.emojilibrary.controller;
 
-import android.support.v7.widget.Toolbar;
 import android.widget.LinearLayout;
 
 import com.gotcreations.emojilibrary.model.layout.AppPanelEventListener;
@@ -53,7 +52,7 @@ public abstract class AppPanel {
         });
     }
 
-    protected void showEmojiKeyboard(int delay) {
+    public void showEmojiKeyboard(int delay) {
         if (delay > 0) {
             try {
                 Thread.sleep(delay);
@@ -65,7 +64,7 @@ public abstract class AppPanel {
         this.mEmojiKeyboard.getEmojiKeyboardLayout().setVisibility(LinearLayout.VISIBLE);
     }
 
-    protected void hideEmojiKeyboard(int delay) {
+    public void hideEmojiKeyboard(int delay) {
         if (delay > 0) {
             try {
                 Thread.sleep(delay);
@@ -78,9 +77,15 @@ public abstract class AppPanel {
         this.mEmojiKeyboard.getEmojiKeyboardLayout().setVisibility(LinearLayout.GONE);
     }
 
-    protected void fireOnMicClicked() {
+    protected void fireOnMicOnClicked() {
         if (mListener != null) {
-            mListener.onMicClicked();
+            mListener.onMicOnClicked();
+        }
+    }
+
+    protected void fireOnMicOffClicked() {
+        if (mListener != null) {
+            mListener.onMicOffClicked();
         }
     }
 
@@ -96,11 +101,13 @@ public abstract class AppPanel {
         }
     }
 
-    protected void openCurtain() {
+    public abstract void showAudioPanel(boolean show);
+
+    public void openCurtain() {
         this.mCurtain.setVisibility(LinearLayout.VISIBLE);
     }
 
-    protected void closeCurtain() {
+    public void closeCurtain() {
         this.mCurtain.setVisibility(LinearLayout.INVISIBLE);
     }
 

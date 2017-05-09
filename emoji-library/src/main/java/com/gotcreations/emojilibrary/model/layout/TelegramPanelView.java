@@ -12,28 +12,28 @@ import com.gotcreations.emojilibrary.R;
 /**
  * Created by edgar on 18/02/2016.
  */
-public class TelegramPanel extends LinearLayout {
+public class TelegramPanelView extends LinearLayout {
 
     private static final String TAG = "EmojiKeyboardLayout";
 
     // CONSTRUCTORS
-    public TelegramPanel(Context context) {
+    public TelegramPanelView(Context context) {
         super(context);
         init(context);
     }
 
-    public TelegramPanel(Context context, AttributeSet attrs) {
+    public TelegramPanelView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public TelegramPanel(Context context, AttributeSet attrs, int defStyleAttr) {
+    public TelegramPanelView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public TelegramPanel(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public TelegramPanelView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }

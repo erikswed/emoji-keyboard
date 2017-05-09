@@ -44,7 +44,7 @@
                 android:stackFromBottom="false"
                 android:transcriptMode="normal"/>
 
-            <com.gotcreations.emojilibrary.model.layout.WhatsAppPanel
+            <com.gotcreations.emojilibrary.model.layout.WhatsAppPanelView
                 android:id="@+id/bottompanel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

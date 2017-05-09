@@ -168,9 +168,16 @@ public class ActivityTelegram extends EmojiCompatActivity implements AppPanelEve
     }
 
     @Override
-    public void onMicClicked() {
-        Log.i(TAG, "Mic was clicked");
-        Toast.makeText(ActivityTelegram.this, "Mic was clicked!", Toast.LENGTH_SHORT).show();
+    public void onMicOnClicked() {
+        Log.i(TAG, "Mic on was clicked");
+        Toast.makeText(ActivityTelegram.this, "Mic on was clicked!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onMicOffClicked() {
+        Log.i(TAG, "Mic off was clicked");
+        Toast.makeText(ActivityTelegram.this, "Mic off was clicked!", Toast.LENGTH_SHORT).show();
+        this.mBottomPanel.showAudioPanel(false);
     }
 
     @Override

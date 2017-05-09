@@ -4,7 +4,7 @@
 
     <item
         android:id="@+id/action_attach"
-        android:icon="@drawable/ic_ab_attach"
+        android:icon="@drawable/ic_attachment_black_24dp"
         android:orderInCategory="1"
         android:title="@string/action_attach"
         app:showAsAction="always"/>
@@ -12,7 +12,7 @@
 
     <item
         android:id="@+id/action_mic"
-        android:icon="@drawable/ic_microphone_grey600_24dp"
+        android:icon="@drawable/ic_mic"
         android:orderInCategory="1"
         android:title="@string/action_mic"
         app:showAsAction="always"/>

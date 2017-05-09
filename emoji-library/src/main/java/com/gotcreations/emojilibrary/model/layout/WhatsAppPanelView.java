@@ -12,28 +12,28 @@ import com.gotcreations.emojilibrary.R;
 /**
  * Created by edgar on 18/02/2016.
  */
-public class WhatsAppPanel extends LinearLayout {
+public class WhatsAppPanelView extends LinearLayout {
 
     private static final String TAG = "EmojiKeyboardLayout";
 
     // CONSTRUCTORS
-    public WhatsAppPanel(Context context) {
+    public WhatsAppPanelView(Context context) {
         super(context);
         init(context);
     }
 
-    public WhatsAppPanel(Context context, AttributeSet attrs) {
+    public WhatsAppPanelView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context);
     }
 
-    public WhatsAppPanel(Context context, AttributeSet attrs, int defStyleAttr) {
+    public WhatsAppPanelView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         init(context);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public WhatsAppPanel(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    public WhatsAppPanelView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         init(context);
     }
