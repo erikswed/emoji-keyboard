@@ -21,7 +21,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.github.ander7agar:emoji-keyboard:1.0.0'
+    compile 'com.github.ander7agar:emoji-keyboard:1.0.5'
 }
 ```
 Refer to the [wiki](https://github.com/instachat/emoji-library/wiki/Development) section.
