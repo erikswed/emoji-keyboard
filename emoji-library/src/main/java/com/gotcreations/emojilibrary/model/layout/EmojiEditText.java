@@ -15,7 +15,7 @@ import com.gotcreations.emojilibrary.R;
 import com.gotcreations.emojilibrary.util.EmojiUtil;
 import com.gotcreations.emojilibrary.util.SoftKeyboardUtil;
 
-public class EmojiEditText extends EditText {
+public class EmojiEditText extends android.support.v7.widget.AppCompatEditText {
 
     public static final String TAG = "EmojiEditText";
 
@@ -41,12 +41,6 @@ public class EmojiEditText extends EditText {
 
     public EmojiEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        this.initFocusListener();
-    }
-
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public EmojiEditText(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
         this.initFocusListener();
     }
 

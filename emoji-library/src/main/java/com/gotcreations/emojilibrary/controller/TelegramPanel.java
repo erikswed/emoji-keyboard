@@ -1,15 +1,20 @@
 package com.gotcreations.emojilibrary.controller;
 
 import android.animation.Animator;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.DrawableRes;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -17,12 +22,11 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-import com.gotcreations.emojilibrary.DimensionUtils;
 import com.gotcreations.emojilibrary.R;
-import com.gotcreations.emojilibrary.model.layout.AudioRecordView;
 import com.gotcreations.emojilibrary.model.layout.EmojiCompatActivity;
 import com.gotcreations.emojilibrary.model.layout.EmojiEditText;
 import com.gotcreations.emojilibrary.model.layout.AppPanelEventListener;
+import com.gotcreations.emojilibrary.model.layout.TelegramPanelView;
 import com.gotcreations.emojilibrary.util.AbstractAnimatorListener;
 
 import static android.view.View.GONE;
@@ -43,6 +47,7 @@ public class TelegramPanel extends AppPanel{
 
     private Toolbar mBottomPanel;
     private TextView audioTime;
+    private TelegramPanelView panelView;
     private int state;
 
     // CONSTRUCTOR
@@ -63,8 +68,8 @@ public class TelegramPanel extends AppPanel{
     protected void initBottomPanel() {
         this.audioTime = (TextView) this.mActivity.findViewById(R.id.audio_time);
         this.mBottomPanel = (Toolbar) this.mActivity.findViewById(R.id.panel);
+        this.panelView = (TelegramPanelView) this.mActivity.findViewById(R.id.panel_container).getParent();
         this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
-        this.mBottomPanel.setTitleTextColor(0xFFFFFFFF);
         this.mBottomPanel.inflateMenu(R.menu.telegram_menu);
 
         this.mBottomPanel.setNavigationOnClickListener(new View.OnClickListener() {
@@ -164,11 +169,31 @@ public class TelegramPanel extends AppPanel{
 
             }
         });
+
+        audioTime.setTextColor(panelView.getAudioTextColor());
+        mInput.setTextColor(panelView.getTextColor());
+        mInput.setHint(panelView.getHintText());
+        mInput.setHintTextColor(panelView.getTextColorHint());
+
+        setIcon(R.id.action_attach, panelView.getAttachIconColor(), R.drawable.ic_attachment);
+        setIcon(R.id.action_mic, panelView.getAudioIconColor(), R.drawable.ic_mic);
+    }
+
+    private void setIcon(int itemId, int color, @DrawableRes int drawableId) {
+        Drawable icon = mActivity.getResources().getDrawable(drawableId);
+        icon.setColorFilter(color, PorterDuff.Mode.SRC_ATOP);
+        setIcon(itemId, icon);
+    }
+
+    private void setIcon(int itemId, Drawable icon) {
+        Menu menu = this.mBottomPanel.getMenu();
+        MenuItem mi = menu.findItem(itemId);
+        mi.setIcon(icon);
     }
 
     @Override
     public void showAudioPanel(final boolean show) {
-        final MenuItem micButton = TelegramPanel.this.mBottomPanel.getMenu().findItem(R.id.action_mic);
+
         if (show) {
             state = AUDIO;
             hideEmojiKeyboard(0);
@@ -193,12 +218,14 @@ public class TelegramPanel extends AppPanel{
                 TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).withEndAction(new Runnable() {
                     @Override
                     public void run() {
-                        micButton.setIcon(R.drawable.ic_send);
+                        setIcon(R.id.action_mic, panelView.getSendIconColor(), R.drawable.ic_send);
                         TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
                     }
                 }).start();
             }
-            this.mBottomPanel.setNavigationIcon(R.drawable.ic_circle);
+            Drawable icCircle = mActivity.getResources().getDrawable(R.drawable.ic_circle);
+            icCircle.setColorFilter(panelView.getAudioIconColor(), PorterDuff.Mode.SRC_ATOP);
+            this.mBottomPanel.setNavigationIcon(icCircle);
 
         } else {
             this.audioTime.animate().alpha(0).setDuration(75).setListener(new AbstractAnimatorListener() {
@@ -238,7 +265,7 @@ public class TelegramPanel extends AppPanel{
                     TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).withEndAction(new Runnable() {
                         @Override
                         public void run() {
-                            micButton.setIcon(R.drawable.ic_send);
+                            setIcon(R.id.action_mic, panelView.getSendIconColor(), R.drawable.ic_send);
                             TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
                         }
                     }).start();
@@ -266,7 +293,7 @@ public class TelegramPanel extends AppPanel{
                 TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).withEndAction(new Runnable() {
                     @Override
                     public void run() {
-                        micButton.setIcon(R.drawable.ic_mic);
+                        setIcon(R.id.action_mic, panelView.getAudioIconColor(), R.drawable.ic_mic);
                         TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(1).scaleY(1).setDuration(75).start();
                     }
                 }).start();
@@ -276,9 +303,29 @@ public class TelegramPanel extends AppPanel{
 
     }
 
+    public int getState() {
+        return state;
+    }
+
+    public boolean isInState(int state) {
+        return this.state == state;
+    }
+
+    public boolean isInAudioState() {
+        return isInState(AUDIO);
+    }
+
+    public boolean isInMessageState() {
+        return !isInAudioState();
+    }
+
     @Override
     public void hideEmojiKeyboard(int delay) {
         super.hideEmojiKeyboard(delay);
         this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
+    }
+
+    public void setAudioTime(CharSequence time) {
+        this.audioTime.setText(time);
     }
 }
