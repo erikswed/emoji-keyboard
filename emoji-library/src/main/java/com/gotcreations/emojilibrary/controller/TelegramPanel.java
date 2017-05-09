@@ -30,6 +30,7 @@ import com.gotcreations.emojilibrary.model.layout.TelegramPanelView;
 import com.gotcreations.emojilibrary.util.AbstractAnimatorListener;
 
 import static android.view.View.GONE;
+import static android.view.View.getDefaultSize;
 
 /**
  * Created by edgar on 18/02/2016.
@@ -102,11 +103,19 @@ public class TelegramPanel extends AppPanel{
                     if (item.getItemId() == R.id.action_attach) {
                         fireOnAttachClicked();
                     } else if (item.getItemId() == R.id.action_mic) {
-                        if (TelegramPanel.this.mInput.getText().toString().equals("")) {
-                            showAudioPanel(true);
-                        } else {
-                            fireOnSendClicked();
+                        switch (state) {
+                            case AUDIO:
+                                showAudioPanel(false);
+                                fireOnSendClicked();
+                                break;
+                            default:
+                                if (TelegramPanel.this.mInput.getText().toString().equals("")) {
+                                    showAudioPanel(true);
+                                } else {
+                                    fireOnSendClicked();
+                                }
                         }
+
                     }
                     return Boolean.TRUE;
                 }
