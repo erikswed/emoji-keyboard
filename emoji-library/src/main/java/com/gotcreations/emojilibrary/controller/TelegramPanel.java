@@ -105,8 +105,8 @@ public class TelegramPanel extends AppPanel{
                     } else if (item.getItemId() == R.id.action_mic) {
                         switch (state) {
                             case AUDIO:
-                                showAudioPanel(false);
                                 fireOnSendClicked();
+                                showAudioPanel(false);
                                 break;
                             default:
                                 if (TelegramPanel.this.mInput.getText().toString().equals("")) {
