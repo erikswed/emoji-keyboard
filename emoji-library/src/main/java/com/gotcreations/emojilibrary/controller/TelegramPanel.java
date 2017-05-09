@@ -99,27 +99,24 @@ public class TelegramPanel extends AppPanel{
         this.mBottomPanel.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-                if (TelegramPanel.this.mListener != null) {
-                    if (item.getItemId() == R.id.action_attach) {
-                        fireOnAttachClicked();
-                    } else if (item.getItemId() == R.id.action_mic) {
-                        switch (state) {
-                            case AUDIO:
+                if (item.getItemId() == R.id.action_attach) {
+                    fireOnAttachClicked();
+                } else if (item.getItemId() == R.id.action_mic) {
+                    switch (state) {
+                        case AUDIO:
+                            fireOnSendClicked();
+                            showAudioPanel(false);
+                            break;
+                        default:
+                            if (TelegramPanel.this.mInput.getText().toString().equals("")) {
+                                showAudioPanel(true);
+                            } else {
                                 fireOnSendClicked();
-                                showAudioPanel(false);
-                                break;
-                            default:
-                                if (TelegramPanel.this.mInput.getText().toString().equals("")) {
-                                    showAudioPanel(true);
-                                } else {
-                                    fireOnSendClicked();
-                                }
-                        }
-
+                            }
                     }
-                    return Boolean.TRUE;
+
                 }
-                return Boolean.FALSE;
+                return Boolean.TRUE;
             }
         });
 
@@ -235,7 +232,7 @@ public class TelegramPanel extends AppPanel{
             Drawable icCircle = mActivity.getResources().getDrawable(R.drawable.ic_circle);
             icCircle.setColorFilter(panelView.getAudioIconColor(), PorterDuff.Mode.SRC_ATOP);
             this.mBottomPanel.setNavigationIcon(icCircle);
-
+            fireOnMicOnClicked();
         } else {
             this.audioTime.animate().alpha(0).setDuration(75).setListener(new AbstractAnimatorListener() {
                 @Override
