@@ -33,7 +33,8 @@ import com.gotcreations.emojilibrary.model.layout.EmojiCompatActivity;
 /**
  * Created by edgar on 17/02/2016.
  */
-public class ActivityWhatsApp extends EmojiCompatActivity implements AppPanelEventListener {
+public class ActivityWhatsApp extends EmojiCompatActivity implements AppPanelEventListener,
+         EmojiCompatActivity.OnLauncherListener {
 
     public static final String TAG = "ActivityWhatsApp";
 
@@ -49,12 +50,12 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements AppPanelEve
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.act_whatsapp);
-
         this.initToolbar();
         this.initDrawerMenu();
         this.initMessageList();
         this.setWhatsAppTheme();
         this.mBottomPanel = new WhatsAppPanel(this, this, R.color.colorPrimaryWhatsApp);
+        mOnLauncherListener = this;
     }
 
     @Override
@@ -154,7 +155,7 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements AppPanelEve
         this.mToolbar.setNavigationIcon(R.drawable.ic_menu_white_24dp);
         this.getWindow().setBackgroundDrawable(this.getResources().getDrawable(R.drawable.telegram_bkg));
         this.setSupportActionBar(this.mToolbar);
-        this.getSupportActionBar().setTitle("Whats App");
+        this.getSupportActionBar().setTitle("Whats App Activity");
     }
 
     @Override
@@ -212,5 +213,11 @@ public class ActivityWhatsApp extends EmojiCompatActivity implements AppPanelEve
         this.mAdapter.getDataset().add(message);
         this.mAdapter.notifyDataSetChanged();
         this.mMessages.scrollToPosition(this.mAdapter.getItemCount() - 1);
+    }
+
+    @Override
+    public void launch() {
+        Intent intent = new Intent(this, LauncherActivity.class);
+        startActivity(intent);
     }
 }

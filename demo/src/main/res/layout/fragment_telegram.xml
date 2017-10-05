@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/messages"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/bottompanel"
+        android:overScrollMode="never"
+        android:scrollbarStyle="outsideOverlay"
+        android:stackFromBottom="false"
+        android:transcriptMode="normal" />
+
+    <com.gotcreations.emojilibrary.model.layout.TelegramPanelView
+        android:id="@+id/bottompanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:attachIconColor="#f28b3d"
+        app:audioIconColor="#3d67f2"
+        app:hintText="hola"
+        app:sendIconColor="#2a831e"
+        app:textColor="#F23D4F"
+        app:textColorHint="#77f23d4f" />
+</RelativeLayout>

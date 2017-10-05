@@ -3,4 +3,11 @@
     <string name="menu_action_toogle_activity">toogle</string>
     <string name="drawer_open">drawer_open</string>
     <string name="drawer_close">drawer_close</string>
+
+    <string name="title_activity_launcher">LauncherActivity</string>
+    <string name="select_launch_mode">Select launch mode</string>
+    <string name="btn_text_fragment">Fragment</string>
+    <string name="btn_text_activity">Activity</string>
+    <string name="welcome_txt">Welcome to emojikeyboard</string>
+
 </resources>

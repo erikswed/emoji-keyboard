@@ -1,5 +1,6 @@
 package com.gotcreations.emojilibrary.model.layout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
@@ -13,6 +14,7 @@ public class EmojiCompatActivity extends AppCompatActivity {
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
     }
     private OnBackPressedListener mOnBackPressedListener;
+    public OnLauncherListener mOnLauncherListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,9 +25,11 @@ public class EmojiCompatActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (this.mOnBackPressedListener != null) {
             if (!this.mOnBackPressedListener.onBackPressed()) {
+                mOnLauncherListener.launch();
                 super.onBackPressed();
             }
         } else {
+            mOnLauncherListener.launch();
             super.onBackPressed();
         }
     }
@@ -36,5 +40,9 @@ public class EmojiCompatActivity extends AppCompatActivity {
 
     public interface OnBackPressedListener {
         Boolean onBackPressed();
+    }
+
+    public interface OnLauncherListener {
+        void launch();
     }
 }

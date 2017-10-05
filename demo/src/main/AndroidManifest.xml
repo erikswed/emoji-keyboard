@@ -1,6 +1,6 @@
-<manifest
-    package="com.gotcreations.emojikeyboard"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.gotcreations.emojikeyboard">
 
     <application
         android:allowBackup="true"
@@ -8,36 +8,54 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <meta-data
             android:name="DATABASE"
-            android:value="emoji.db"/>
+            android:value="emoji.db" />
         <meta-data
             android:name="VERSION"
-            android:value="1"/>
+            android:value="1" />
         <meta-data
             android:name="QUERY_LOG"
-            android:value="true"/>
+            android:value="true" />
         <meta-data
             android:name="DOMAIN_PACKAGE_NAME"
-            android:value="com.gotcreations.android"/>
+            android:value="com.gotcreations.android" />
 
         <activity
             android:name=".controller.ActivityTelegram"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustNothing">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
 
+        </activity>
         <activity
             android:name=".controller.ActivityWhatsApp"
             android:label="@string/app_name"
             android:windowSoftInputMode="adjustNothing">
-        </activity>
 
+        </activity>
+        <activity
+            android:name=".controller.ActivityWhatsAppForFragment"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustNothing">
+
+        </activity>
+        <activity
+            android:name=".controller.ActivityTelegramForFragment"
+            android:label="@string/app_name"
+            android:windowSoftInputMode="adjustNothing">
+
+        </activity>
+        <activity
+            android:name=".controller.LauncherActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_launcher"
+            android:theme="@style/FullscreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

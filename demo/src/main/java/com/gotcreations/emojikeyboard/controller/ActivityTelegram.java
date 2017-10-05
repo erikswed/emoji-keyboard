@@ -1,5 +1,6 @@
 package com.gotcreations.emojikeyboard.controller;
 
+import android.app.*;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -35,7 +36,8 @@ import com.gotcreations.emojilibrary.model.layout.AppPanelEventListener;
 /**
  * Created by edgar on 17/02/2016.
  */
-public class ActivityTelegram extends EmojiCompatActivity implements AppPanelEventListener {
+public class ActivityTelegram extends EmojiCompatActivity implements AppPanelEventListener
+        , EmojiCompatActivity.OnLauncherListener {
 
     public static final String TAG = "ActivityTelegram";
 
@@ -51,12 +53,12 @@ public class ActivityTelegram extends EmojiCompatActivity implements AppPanelEve
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.act_telegram);
-
         this.initToolbar();
         this.initDrawerMenu();
         this.setTelegramTheme();
         this.initMessageList();
         this.mBottomPanel = new TelegramPanel(this, this);
+        mOnLauncherListener = this;
     }
 
     @Override
@@ -153,7 +155,7 @@ public class ActivityTelegram extends EmojiCompatActivity implements AppPanelEve
     }
 
     private void setTelegramTheme() {
-        ActivityTelegram.this.mToolbar.setTitle("Telegram");
+        ActivityTelegram.this.mToolbar.setTitle("Telegram Activity");
         ActivityTelegram.this.getWindow().setBackgroundDrawable(ActivityTelegram.this.getResources().getDrawable(R.drawable.telegram_bkg));
         this.mToolbar.setBackgroundColor(this.getResources().getColor(R.color.colorPrimaryTelegram));
         if (Build.VERSION.SDK_INT >= 21) {
@@ -220,5 +222,11 @@ public class ActivityTelegram extends EmojiCompatActivity implements AppPanelEve
         this.mAdapter.getDataset().add(message);
         this.mAdapter.notifyDataSetChanged();
         this.mMessages.scrollToPosition(this.mAdapter.getItemCount() - 1);
+    }
+
+    @Override
+    public void launch() {
+        Intent intent = new Intent(this, LauncherActivity.class);
+        startActivity(intent);
     }
 }
