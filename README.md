@@ -5,6 +5,8 @@ A library to provide an emoji-keyboard implementation for Android applications
 This is forked  from [edsilfer/emoji-keyboard](https://github.com/edsilfer/emoji-keyboard) project.
 <a name="showcase" />
 
+Thursday, May 05th, 2017. Update on this fork is the option to use the emoji-keyboard in a Fragment. See Demo app
+
 # Showcase
 <p align="center">
 <img src="showcase/telegram.gif" align="center"  hspace="20">
