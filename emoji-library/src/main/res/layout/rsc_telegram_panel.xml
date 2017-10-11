@@ -15,7 +15,7 @@
         android:id="@+id/panel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/rsc_bottom_panel_bkg"
+        android:background="?attr/rsc_bottom_panel_bkg"
         android:elevation="0dp"
         android:minHeight="?attr/actionBarSize"
         app:layout_scrollFlags="scroll|enterAlways"
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:hint="Message"
             android:singleLine="true"
-            android:textColor="@color/rsc_bottom_panel_accent"
+            android:textColor="?attr/rsc_bottom_panel_accent"
             android:textSize="18dip"
             android:theme="@style/TelegramEditText"
             app:emojiSize="25dip"/>

@@ -42,7 +42,6 @@ public abstract class AppPanelForFragment {
                     AppPanelForFragment.this.hideEmojiKeyboard(0);
                     return Boolean.TRUE;
                 }
-
                 return Boolean.FALSE;
             }
         });

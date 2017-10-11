@@ -7,7 +7,7 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDarkTelegram</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+    <!-- Launcher Activity theme. -->
     <style name="FullscreenTheme" parent="AppTheme">
         <item name="android:actionBarStyle">@style/FullscreenActionBarStyle</item>
         <item name="android:windowActionBarOverlay">true</item>
@@ -19,5 +19,20 @@
     <style name="FullscreenActionBarStyle" parent="Widget.AppCompat.ActionBar">
         <item name="android:background">@color/black_overlay</item>
     </style>
+    <!-- Example theme for all Activity's. -->
+    <style name="Demo.Theme" parent="AppTheme">
 
+        <item name="rsc_emoji_tab_indicator">#3F51B5</item>
+        <item name="rsc_emoji_tab_bkg">#E3E7E8</item>
+        <item name="rsc_emoji_layout_bkg">#EBEFF2</item>
+        <item name="rsc_bottom_panel_bkg">#F8F8F8</item>
+        <item name="rsc_bottom_panel_accent">#263239</item>
+
+        <item name="Emojilibrary_textColor">#F23D4F</item>
+        <item name="Emojilibrary_textColorHint">#77f2314f</item>
+        <item name="Emojilibrary_audioTextColor" >#F23D4F</item>
+        <item name="Emojilibrary_attachIconColor">#f28b3d</item>
+        <item name="Emojilibrary_audioIconColor">#3d67f2</item>
+        <item name="Emojilibrary_sendIconColor">#2a831e</item>
+    </style>
 </resources>

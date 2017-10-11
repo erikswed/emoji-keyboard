@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <attr name="hintText" format="reference|string"/>
-    <attr name="textColor" format="reference|color"/>
-    <attr name="textColorHint" format="reference|color"/>
-    <attr name="audioTextColor" format="reference|color"/>
-    <attr name="attachIconColor" format="reference|color"/>
-    <attr name="audioIconColor" format="reference|color"/>
-    <attr name="sendIconColor" format="reference|color"/>
-
     <declare-styleable name="Emoji">
         <attr name="emojiSize" format="dimension"/>
         <attr name="emojiAlignment" format="enum">
@@ -20,14 +12,18 @@
         <attr name="emojiUseSystemDefault" format="boolean"/>
     </declare-styleable>
 
-
     <declare-styleable name="TelegramPanelView">
-        <attr name="hintText" />
-        <attr name="textColor" />
-        <attr name="textColorHint" />
-        <attr name="audioTextColor" />
-        <attr name="attachIconColor" />
-        <attr name="audioIconColor" />
-        <attr name="sendIconColor" />
+        <attr name="rsc_emoji_tab_indicator" format="reference|color"/>
+        <attr name="rsc_emoji_tab_bkg" format="reference|color"/>
+        <attr name="rsc_emoji_layout_bkg" format="reference|color"/>
+        <attr name="rsc_bottom_panel_bkg" format="reference|color"/>
+        <attr name="rsc_bottom_panel_accent" format="reference|color"/>
+        <attr name="Emojilibrary_hintText" format="reference|string"/>
+        <attr name="Emojilibrary_textColor" format="reference|color"/>
+        <attr name="Emojilibrary_textColorHint" format="reference|color"/>
+        <attr name="Emojilibrary_audioTextColor" format="reference|color"/>
+        <attr name="Emojilibrary_attachIconColor" format="reference|color"/>
+        <attr name="Emojilibrary_audioIconColor" format="reference|color"/>
+        <attr name="Emojilibrary_sendIconColor" format="reference|color"/>
     </declare-styleable>
 </resources>

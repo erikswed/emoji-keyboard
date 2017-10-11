@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:hint="Message"
                 android:singleLine="true"
-                android:textColor="@color/rsc_bottom_panel_accent"
+                android:textColor="?attr/rsc_bottom_panel_accent"
                 android:textSize="18dip"
                 android:theme="@style/WhatsAppEditText"
                 app:emojiSize="25dip"/>
@@ -65,7 +65,7 @@
             android:layout_margin="2dip"
             android:clickable="true"
             android:src="@drawable/ic_send_whatsapp"
-            app:backgroundTint="@color/rsc_emoji_tab_indicator"
+            app:backgroundTint="?attr/rsc_emoji_tab_indicator"
             app:borderWidth="0dp"
             app:elevation="2dp"/>
     </LinearLayout>

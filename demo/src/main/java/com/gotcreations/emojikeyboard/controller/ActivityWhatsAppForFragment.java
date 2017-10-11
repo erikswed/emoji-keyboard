@@ -137,7 +137,7 @@ public class ActivityWhatsAppForFragment extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         final Fragment frag = getSupportFragmentManager().findFragmentByTag(TAG);
-        if(((WhatsUPFragment)frag).onBackPressed()) {
+        if(((WhatsUPFragment)frag).onBackPress()) {
             Intent intent = new Intent(this, LauncherActivity.class);
             startActivity(intent);
             super.onBackPressed();

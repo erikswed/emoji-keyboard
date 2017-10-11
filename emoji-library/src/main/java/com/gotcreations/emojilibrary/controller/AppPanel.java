@@ -9,7 +9,6 @@ import com.gotcreations.emojilibrary.model.layout.EmojiEditText;
 /**
  * Created by Andersson G. Acosta on 25/04/17.
  */
-
 public abstract class AppPanel {
 
     protected EmojiCompatActivity mActivity;
@@ -17,7 +16,6 @@ public abstract class AppPanel {
     protected EmojiKeyboard mEmojiKeyboard;
     protected LinearLayout mCurtain;
     protected AppPanelEventListener mListener;
-
     protected Boolean isEmojiKeyboardVisible = Boolean.FALSE;
 
     public AppPanel(EmojiCompatActivity mActivity) {
@@ -46,7 +44,6 @@ public abstract class AppPanel {
                     AppPanel.this.hideEmojiKeyboard(0);
                     return Boolean.TRUE;
                 }
-
                 return Boolean.FALSE;
             }
         });
@@ -72,7 +69,6 @@ public abstract class AppPanel {
                 e.printStackTrace();
             }
         }
-
         this.isEmojiKeyboardVisible = Boolean.FALSE;
         this.mEmojiKeyboard.getEmojiKeyboardLayout().setVisibility(LinearLayout.GONE);
     }

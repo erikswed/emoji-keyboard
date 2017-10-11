@@ -35,7 +35,7 @@ import static android.view.View.getDefaultSize;
 /**
  * Created by edgar on 18/02/2016.
  */
-public class TelegramPanel extends AppPanel{
+public class TelegramPanel extends AppPanel {
 
     private static final String TAG = "TelegramPanel";
     public static final int EMPTY_MESSAGE = 0;
@@ -180,7 +180,6 @@ public class TelegramPanel extends AppPanel{
         mInput.setTextColor(panelView.getTextColor());
         mInput.setHint(panelView.getHintText());
         mInput.setHintTextColor(panelView.getTextColorHint());
-
         setIcon(R.id.action_attach, panelView.getAttachIconColor(), R.drawable.ic_attachment);
         setIcon(R.id.action_mic, panelView.getAudioIconColor(), R.drawable.ic_mic);
     }
@@ -199,7 +198,6 @@ public class TelegramPanel extends AppPanel{
 
     @Override
     public void showAudioPanel(final boolean show) {
-
         if (show) {
             state = AUDIO;
             hideEmojiKeyboard(0);
@@ -211,7 +209,6 @@ public class TelegramPanel extends AppPanel{
                     mInput.setVisibility(GONE);
                 }
             }).start();
-
             this.audioTime.animate().alpha(1).setDuration(75).setListener(new AbstractAnimatorListener() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
@@ -250,19 +247,15 @@ public class TelegramPanel extends AppPanel{
             }).start();
             showSendOptions(true);
         }
-
     }
 
     public void showSendOptions(boolean show) {
-
         final MenuItem micButton = TelegramPanel.this.mBottomPanel.getMenu().findItem(R.id.action_mic);
-
         if (isEmojiKeyboardVisible) {
             this.mBottomPanel.setNavigationIcon(R.drawable.ic_keyboard);
         } else {
             this.mBottomPanel.setNavigationIcon(R.drawable.input_emoji);
         }
-
         if (!this.mInput.getText().toString().equals("") && show) {
 
             if (state != PREPARED_MESSAGE && state != PREPARED_MESSAGE_EMOJI_KEYBOARD && state != PREPARED_MESSAGE_KEYBOARD) {
@@ -277,15 +270,12 @@ public class TelegramPanel extends AppPanel{
                     }).start();
                 }
             }
-
             state = PREPARED_MESSAGE;
             if (mInput.isSoftKeyboardVisible()) {
                 state = PREPARED_MESSAGE_KEYBOARD;
             } else if (isEmojiKeyboardVisible) {
                 state = PREPARED_MESSAGE_EMOJI_KEYBOARD;
             }
-
-
         } else {
             state = EMPTY_MESSAGE;
             if (mInput.isSoftKeyboardVisible()) {
@@ -293,7 +283,6 @@ public class TelegramPanel extends AppPanel{
             } else if (isEmojiKeyboardVisible) {
                 state = EMPTY_MESSAGE_EMOJI_KEYBOARD;
             }
-
             TelegramPanel.this.mBottomPanel.findViewById(R.id.action_attach).animate().scaleX(1).scaleY(1).setDuration(150).start();
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
                 TelegramPanel.this.mBottomPanel.findViewById(R.id.action_mic).animate().scaleX(0).scaleY(0).setDuration(75).withEndAction(new Runnable() {
@@ -305,8 +294,6 @@ public class TelegramPanel extends AppPanel{
                 }).start();
             }
         }
-
-
     }
 
     public int getState() {

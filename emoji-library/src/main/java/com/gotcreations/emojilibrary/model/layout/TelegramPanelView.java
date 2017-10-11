@@ -57,13 +57,13 @@ public class TelegramPanelView extends LinearLayout {
         if (attrs != null) {
             TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.TelegramPanelView);
 
-            hintText = a.getText(R.styleable.TelegramPanelView_hintText);
-            textColor = a.getColor(R.styleable.TelegramPanelView_textColor, 0x000000);
-            textColorHint = a.getColor(R.styleable.TelegramPanelView_textColorHint, 0x000000);
-            audioTextColor = a.getColor(R.styleable.TelegramPanelView_audioTextColor, 0x000000);
-            audioIconColor = a.getColor(R.styleable.TelegramPanelView_audioIconColor, 0x000000);
-            attachIconColor = a.getColor(R.styleable.TelegramPanelView_attachIconColor, 0x000000);
-            sendIconColor = a.getColor(R.styleable.TelegramPanelView_sendIconColor, 0x000000);
+            hintText = a.getText(R.styleable.TelegramPanelView_Emojilibrary_hintText);
+            textColor = a.getColor(R.styleable.TelegramPanelView_Emojilibrary_textColor, 0x000000);
+            textColorHint = a.getColor(R.styleable.TelegramPanelView_Emojilibrary_textColorHint, 0x000000);
+            audioTextColor = a.getColor(R.styleable.TelegramPanelView_Emojilibrary_audioTextColor, 0x000000);
+            audioIconColor = a.getColor(R.styleable.TelegramPanelView_Emojilibrary_audioIconColor, 0x000000);
+            attachIconColor = a.getColor(R.styleable.TelegramPanelView_Emojilibrary_attachIconColor, 0x000000);
+            sendIconColor = a.getColor(R.styleable.TelegramPanelView_Emojilibrary_sendIconColor, 0x000000);
 
             a.recycle();
         }

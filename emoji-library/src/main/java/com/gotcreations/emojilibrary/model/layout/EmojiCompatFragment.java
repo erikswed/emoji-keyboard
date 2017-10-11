@@ -2,9 +2,7 @@ package com.gotcreations.emojilibrary.model.layout;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.AppCompatDelegate;
-
 
 public class EmojiCompatFragment extends Fragment {
 
@@ -13,8 +11,7 @@ public class EmojiCompatFragment extends Fragment {
     }
     private OnBackPressedListener mOnBackPressedListener;
 
-
-    public boolean onBackPressed() {
+    public boolean onBackPress() {
         if (this.mOnBackPressedListener != null) {
             if (!this.mOnBackPressedListener.onBackPressed()) {
                 return true;
@@ -29,7 +26,7 @@ public class EmojiCompatFragment extends Fragment {
         this.mOnBackPressedListener = backListener;
     }
 
-    public interface OnBackPressedListener {
+     public interface OnBackPressedListener {
         Boolean onBackPressed();
     }
 }

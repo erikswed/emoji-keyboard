@@ -67,7 +67,6 @@ public class ActivityTelegramForFragment extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    // INITIALIZATIONS
     private void initDrawerMenu() {
         this.mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         this.findViewById(R.id.github_thumbnail);
@@ -131,7 +130,7 @@ public class ActivityTelegramForFragment extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         final Fragment frag = getSupportFragmentManager().findFragmentByTag(TAG);
-        if(((TelegramFragment)frag).onBackPressed()) {
+        if(((TelegramFragment)frag).onBackPress()) {
             Intent intent = new Intent(this, LauncherActivity.class);
             startActivity(intent);
             super.onBackPressed();

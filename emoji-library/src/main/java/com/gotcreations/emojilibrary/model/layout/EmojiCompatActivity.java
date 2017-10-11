@@ -25,7 +25,8 @@ public class EmojiCompatActivity extends AppCompatActivity {
     public void onBackPressed() {
         if (this.mOnBackPressedListener != null) {
             if (!this.mOnBackPressedListener.onBackPressed()) {
-                mOnLauncherListener.launch();
+                if(mOnLauncherListener != null)
+                    mOnLauncherListener.launch();
                 super.onBackPressed();
             }
         } else {
@@ -42,6 +43,9 @@ public class EmojiCompatActivity extends AppCompatActivity {
         Boolean onBackPressed();
     }
 
+    /**
+     * Only used in the demo app to relaunch launcher activity
+     */
     public interface OnLauncherListener {
         void launch();
     }
