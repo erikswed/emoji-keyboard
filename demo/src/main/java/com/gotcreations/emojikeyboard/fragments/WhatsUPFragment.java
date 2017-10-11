@@ -133,4 +133,10 @@ public class WhatsUPFragment extends EmojiCompatFragment implements AppPanelEven
         this.mAdapter.notifyDataSetChanged();
         this.mMessages.scrollToPosition(this.mAdapter.getItemCount() - 1);
     }
+
+    public boolean onBackPressed() {
+        Intent intent = new Intent(getActivity(), LauncherActivity.class);
+        startActivity(intent);
+        return true;
+    }
 }

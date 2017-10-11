@@ -26,7 +26,7 @@ public class EmojiCompatFragment extends Fragment {
         this.mOnBackPressedListener = backListener;
     }
 
-     public interface OnBackPressedListener {
+    public interface OnBackPressedListener {
         Boolean onBackPressed();
     }
 }

@@ -1,10 +1,11 @@
 # Android Emoji Keyboard
 A library to provide an emoji-keyboard implementation for Android applications
-
 [![](https://jitpack.io/v/ander7agar/emoji-keyboard.svg)](https://jitpack.io/#ander7agar/emoji-keyboard)
 
-This is forked  from [edsilfer/emoji-keyboard](https://github.com/edsilfer/emoji-keyboard) project.
+This is forked from [ander7agar/emoji-keyboard](https://github.com/ander7agar/emoji-keyboard) originating from  [edsilfer/emoji-keyboard](https://github.com/edsilfer/emoji-keyboard) project.
 <a name="showcase" />
+
+Thursday, Oct 05th, 2017. Update on this fork is the option to use the emoji-keyboard in a Fragment. See Demo app
 
 # Showcase
 <p align="center">
